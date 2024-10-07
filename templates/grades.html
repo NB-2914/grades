@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %} Grades {% endblock %}
+{% block main %}
+    
+    <div class="container" ">
+        <div class="row ">
+            <div class="col border rounded"id="squares">Best Score</div>
+            <div class="col border rounded"id="squares">Last Score</div>
+            <div class="col border rounded "id="squares">Worst Score</div>
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <div class="row" >
+            <div class="col"><button type="button" class="btn btn-lg btn-secondary"><a class="nav-link" href="/update_grade">Update Grade</a></button></div>
+            <div class="col" id="test"><button type="button" class="btn btn-lg btn-primary"><a class="nav-link" href="/enter_grade">Enter Grade</a></button></div>
+            <div class="col"><button type="button" class="btn btn-lg btn-secondary"><a class="nav-link" href="/delete_Grade">Update Grade</a></button></div>
+        </div>
+    </div><br>
+
+    <div>
+        <table>
+            <tr>
+                <td>#</td>
+                <td>Subject</td>
+                <td>Score</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

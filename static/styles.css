@@ -1,0 +1,39 @@
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+#test
+{
+    flex-grow: 2;
+}
+.form-select
+{
+    max-width: fit-content;
+}
+.row
+{
+    align-items: center;
+
+}
+.form-label
+{
+    font-size: larger;
+}
+.num
+{
+    font-size: x-large;
+}
+#form
+{
+    display:grid;
+    place-items: center;
+}
+
+#squares{
+    width: 33%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    font-size: x-large;
+    align-items: center;
+}
