@@ -58,6 +58,8 @@ def enter():
         if not score or not subject:
             return helpers.apology("your input")
         
+        database.insert(f"INSERT INTO scores (user_id, subject_id, score, year_id,time) VALUES (?,?,?,?,CURRENT_TIMESTAMP)", session["user_id"], subject, score, session["year_id"])
+
         db.execute("INSERT INTO scores (user_id, subject_id, score, year_id,time) VALUES (?,?,?,?,CURRENT_TIMESTAMP)", session["user_id"], subject, score, session["year_id"])
         
         return redirect("/")
@@ -124,6 +126,7 @@ def login():
         session["user_id"] = rows[0]["user_id"]
         
         rows = db.execute("SELECT * FROM year WHERE user_id = ? ORDER BY year_id DESC LIMIT 1", session["user_id"])
+        print("test rows",rows)
         session["year_name"] = rows[0]["year_name"]
         session["year_id"] = rows[0]["year_id"]
 
