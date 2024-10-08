@@ -1,4 +1,5 @@
 import helpers
+import database
 
 
 from cs50 import SQL
