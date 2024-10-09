@@ -3,3 +3,4 @@ Delete grades building
 average scores for each subject in a new table
 main page designe 
 code for main page
+switch between years
