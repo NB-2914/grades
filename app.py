@@ -17,7 +17,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 Session(app)
 
-PASSWORD_LENGTH = 5
+PASSWORD_LENGTH = 5 
 
 
 @app.after_request
@@ -55,11 +55,9 @@ def enter():
         if not score or not subject:
             return helpers.apology("your input")
         
-        session["year_id"] = 1
         text = "INSERT INTO scores (user_id, subject_id, score, year_id,time) VALUES ({user_id},{subject},{score},{year},CURRENT_TIMESTAMP)"
         database.insert(text.format(user_id = session["user_id"], subject = subject,score = score,year = session["year_id"]))
-
-      
+        
         return redirect("/")
     
     else:
