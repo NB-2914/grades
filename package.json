@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "flaks": "^1.1.11",
-    "flask": "^0.2.10"
-  }
-}
