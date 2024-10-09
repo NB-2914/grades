@@ -57,7 +57,6 @@ def enter():
         
         text = "INSERT INTO scores (user_id, subject_id, score, year_id,time) VALUES ({user_id},{subject},{score},{year},CURRENT_TIMESTAMP)"
         database.insert(text.format(user_id = session["user_id"], subject = subject,score = score,year = session["year_id"]))
-        
         return redirect("/")
     
     else:
