@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %} Grades {% endblock %}
+{% block main %}
+<form action="/new_year" method="post" >
+    <legend><h1>Create new school year</h1></legend>
+    <div id="form">
+        <label id="label" class="form-label">Enter name of school year</label>
+        <input type="text" autofocus autocomplete="off" class="form-control mx-auto w-auto" name="name" placeholder="Name of the school year">
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+</form>
+
+
+
+{% endblock %}
