@@ -1,4 +1,5 @@
 import sqlite3
+import helpers
 
 
 
@@ -19,7 +20,6 @@ def readData(command):
     try: 
         database = sqlite3.connect("grades.db")
         cursor = database.cursor()
-        
         cursor.execute(command)
         result = cursor.fetchall()
         

@@ -109,20 +109,20 @@ def login():
     session.clear
 
     if request.method == "POST":
-        
+  
         username = request.form.get("username")
         password = request.form.get("password")
 
         if not username or not password:
             return helpers.apology("missing inputs")
+        text = "SELECT * FROM users WHERE username = {username}".format(username = username)
         
-        rows = database.readData("SELECT * FROM users WHERE username = {username}".format(username = username))
+        rows = database.readData(text)
 
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"],password):
             return helpers.apology("your password")
     
         session["user_id"] = rows[0]["user_id"]
-        
         rows = database.readData("SELECT * FROM year WHERE user_id = {user_id} ORDER BY year_id DESC LIMIT 1".format(user_id = session["user_id"]))
 
         if len(rows) == 0 :
