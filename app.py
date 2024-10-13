@@ -1,5 +1,6 @@
 import helpers
 import database
+import userManagement
 
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
@@ -115,11 +116,11 @@ def login():
 
         if not username or not password:
             return helpers.apology("missing inputs")
-        text = "SELECT * FROM users WHERE username = {username}".format(username = username)
+        text = "SELECT * FROM users WHERE username = '{username}'".format(username = username)
         
         rows = database.readData(text)
-
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"],password):
+        
+        if not check_password_hash(rows[0]["hash"],password): #len(rows) != 1 or 
             return helpers.apology("your password")
     
         session["user_id"] = rows[0]["user_id"]
@@ -166,3 +167,6 @@ def check_grade():
 
     else:
         return render_template("/check_grade.html")
+    
+
+

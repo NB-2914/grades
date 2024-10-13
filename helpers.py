@@ -15,3 +15,6 @@ def login_required(f):
 
 def apology(error):
     return render_template("apology.html", error = error)
+
+def debug(error):
+    return render_template("debug.html", error = error)

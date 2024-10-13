@@ -16,19 +16,18 @@ def insert(command):
         if database:
             database.close()
             
+
+
 def readData(command):
     try: 
-        database = sqlite3.connect("grades.db")
-        cursor = database.cursor()
+        conn = sqlite3.connect('grades.db')
+        cursor = conn.cursor()
         cursor.execute(command)
-        result = cursor.fetchall()
-        
-        cursor.close()
-        return result
-        
+        rows = cursor.fetchall()
+        return rows
     except sqlite3.Error as error:
-        print("There is a error - ", error)
+        return helpers.apology("There is a error - ", error)
     
     finally:
-        if database:
-            database.close()
+        if conn:
+            conn.close()
