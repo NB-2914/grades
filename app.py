@@ -139,7 +139,8 @@ def login():
 @app.route("/logout")
 @helpers.login_required
 def logout():
-    session.clear()
+    session.clear() 
+    t = 1
 
     return redirect("/")
 
