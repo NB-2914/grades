@@ -113,19 +113,18 @@ def login():
   
         username = request.form.get("username")
         password = request.form.get("password")
-
         if not username or not password:
             return helpers.apology("missing inputs")
-        text = "SELECT * FROM users WHERE username = '{username}'".format(username = username)
-        
+        text = "SELECT * FROM users WHERE username = '{username}';".format(username = username)
+
         rows = database.readData(text)
-        
-        if not check_password_hash(rows[0]["hash"],password): #len(rows) != 1 or 
+
+        if not check_password_hash(rows[2],password):
             return helpers.apology("your password")
     
-        session["user_id"] = rows[0]["user_id"]
+        session["user_id"] = rows[0]
         rows = database.readData("SELECT * FROM year WHERE user_id = {user_id} ORDER BY year_id DESC LIMIT 1".format(user_id = session["user_id"]))
-
+        return redirect("/")
         if len(rows) == 0 :
             return redirect("/new_year")
             
