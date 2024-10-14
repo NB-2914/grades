@@ -128,8 +128,8 @@ def login():
         if len(rows) == 0 :
             return redirect("/new_year")
             
-        session["year_name"] = rows[0]["year_name"]
-        session["year_id"] = rows[0]["year_id"]
+        session["year_name"] = rows[0][2]
+        session["year_id"] = rows[0][0]
 
         return redirect("/")
 
@@ -151,8 +151,13 @@ def new_year():
 
         if not name:
             return helpers.apology("No name defined")
-        database.insert("INSERT user_id, year_name INTO  year VALUES({user_id},{year_name} ))".format(user_id = session["user_id"], year_name = name))
+        
+        rows = database.readData("SELECT * FROM year;")
+        
+        database.insert("INSERT INTO year VALUES({len},{user_id},{year_name} ))".format(len =len(rows), user_id = session["user_id"], year_name = name))
+        
         session["year_name"] = name
+        
         return redirect("/")
     else:
         return render_template("new_year.html")
@@ -162,8 +167,7 @@ def new_year():
 @helpers.login_required
 def check_grade():
     if request.method == "POST":
-        c = 1
-
+        t =1
     else:
         return render_template("/check_grade.html")
     

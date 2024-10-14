@@ -7,8 +7,8 @@
             <label id="label" class="form-label">Enter Subject</label>
             <select class="form-select" name="subject" aria-label="Enter Subject">
                 <option selected disabled >Select Subject to Enter</option>
-                {% for row in subjects %}
-                <option value="{{row.subject_id}}">{{row.subject_name}}</option>
+                {% for subject_id, subject_name in subjects %}
+                <option value="{{ subject_id }}">{{ subject_name }}</option>
                 {% endfor %}
             </select>
         </div><br>
