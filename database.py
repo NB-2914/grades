@@ -26,7 +26,7 @@ def readData(command):
         rows = cursor.fetchall()
         return rows
     except sqlite3.Error as error:
-        return helpers.apology("There is a error - ", error)
+        return helpers.apology(error)
     
     finally:
         if conn:

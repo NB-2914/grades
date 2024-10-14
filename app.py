@@ -119,12 +119,12 @@ def login():
 
         rows = database.readData(text)
 
-        if not check_password_hash(rows[2],password):
+        if not check_password_hash(rows[0][2],password):
             return helpers.apology("your password")
     
-        session["user_id"] = rows[0]
+        session["user_id"] = rows[0][0]
         rows = database.readData("SELECT * FROM year WHERE user_id = {user_id} ORDER BY year_id DESC LIMIT 1".format(user_id = session["user_id"]))
-        return redirect("/")
+
         if len(rows) == 0 :
             return redirect("/new_year")
             
@@ -140,7 +140,6 @@ def login():
 @helpers.login_required
 def logout():
     session.clear() 
-    t = 1
 
     return redirect("/")
 
